@@ -48,8 +48,15 @@ _rpi_models = [
     HwModelInfo('b03112', 'rpi', 'Pi 4', '', 'v1.2', '2GB', 'Sony, UK'),
     HwModelInfo('c03111', 'rpi', 'Pi 4', '', 'v1.1', '4GB', 'Sony, UK'),
     HwModelInfo('c03112', 'rpi', 'Pi 4', '', 'v1.2', '4GB', 'Sony, UK'),
+    HwModelInfo('c03114', 'rpi', 'Pi 4', '', 'v1.4', '4GB', 'Sony, UK'),
+    HwModelInfo('d03114', 'rpi', 'Pi 4', '', 'v1.4', '8GB', 'Sony, UK'),
 
     HwModelInfo('c03130', 'rpi', 'Pi 400', '', 'v1.1', '4GB', 'Sony, UK'),
+
+    HwModelInfo('a03140', 'rpi', 'CM4', '', 'v1.0', '1GB', 'Sony, UK'),
+    HwModelInfo('b03140', 'rpi', 'CM4', '', 'v1.0', '2GB', 'Sony, UK'),
+    HwModelInfo('c03140', 'rpi', 'CM4', '', 'v1.0', '4GB', 'Sony, UK'),
+    HwModelInfo('d03140', 'rpi', 'CM4', '', 'v1.0', '8GB', 'Sony, UK'),
 ]
 
 rpi_models = {info.code: info for info in _rpi_models}
@@ -81,7 +88,10 @@ def _is(main):
 
 
 def is_pi4():
-    return _is('Pi 4')
+    try:
+        return _is('Pi 4')
+    except KeyError:
+        return True
 
 
 def is_pi3():
