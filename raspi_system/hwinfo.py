@@ -64,7 +64,7 @@ rpi_models = {info.code: info for info in _rpi_models}
 
 def model_string():
     result = subprocess.check_output(['cat', '/proc/device-tree/model'])
-    result = result.encode().strip()
+    result = result.strip().rstrip('\x00')
     return result
 
 
